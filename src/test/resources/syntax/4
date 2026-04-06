@@ -1,0 +1,27 @@
+home/user/mine:page(title:"首页")<
+	navbar:navigationbar<
+		location:icon,
+		address:text
+	>,
+	query:searchbox,
+	portrait:image(position:"(0,0,0,100)"),
+	name:text,
+	description:text,
+	row<
+		star:text,
+		fee:text,
+		duration:text
+	>,
+	title(text:"今日推荐膳食", description:"", more:"true"),
+	dish:horizontal_view<
+		image(position:"(0,0,0,100)"),
+		text,
+		text
+	>,
+	category:tabs(values: "A类,B类,C类"),
+	dish:gridview<
+		image(position:"(0,0,0,100)"),
+		text,
+		text
+	>
+>

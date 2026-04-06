@@ -1,0 +1,23 @@
+index:page<    
+  qry_lev:query<
+    addvcd!!:addv(text: "行政区划"),
+    lvnm!:input(text: "堤防名称"),
+    prsc:dict(text: "工程规模")
+  >,
+  buttons<
+    (text: "查询", href: "/data/wrp/lev/find.do"),
+    (text: "新建", href: "/view/wrp/lev/edit.do?lvcd=")
+  >,
+  grd_lev:pagination-table(
+    boundedQuery: "qry_lev",
+    url: "/common/paginate.do",
+    sqlId: "wrp.lev.list"
+  )<
+    lvnm:label(text: "堤防名称"),
+    addvnm:label(text: "行政区划"),
+    prscnm:label(text: "工程规模"),
+    buttons<
+      (type: "edit", text: "编辑", uri: "/view/wrp/lev/edit.do?lvcd=", sqlId: "wrp.lev.list")
+    >
+  >
+>

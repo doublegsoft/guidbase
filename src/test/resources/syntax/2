@@ -1,0 +1,13 @@
+edit:page<
+    frm_lev:form(
+        sqlId: "wrp.lev.list"
+    )<
+        lvcd!!: hidden,
+        lvnm!: input(text: "堤防名称", required: "true"),
+        addvcd: addv(text: "行政区划", required: "true"),
+        prsc: dict(text: "工程规模", required: "true")
+    >,
+    buttons<
+        (type: "save", text: "保存", ref: "frm_lev", uri: "/data/wrp/lev/bsin.do", sqlId: "wrp.lev.bsin.save")
+    >
+>
