@@ -1,0 +1,49 @@
+stat:page(title: "缴费统计汇总")<
+  frm_search:form(
+    layout: "inline"
+  )<
+    statDate: date(placeholder: "2026-04-01"),
+    channel: dict(placeholder: "全部渠道")
+  >,
+
+  search_buttons<
+    (type: "primary", text: "查询", ref: "frm_search", action: "query"),
+    (type: "default", text: "重置", ref: "frm_search", action: "reset")
+  >,
+
+  kpi_summary:group(layout: "cards")<
+    totalCount: metric(text: "缴费总笔数", format: "number"),
+    totalAmount: metric(text: "缴费总金额", format: "currency", color: "green"),
+    topChannel: metric(text: "最高渠道"),
+    onlineRatio: metric(text: "线上缴费占比", format: "percent", color: "green")
+  >,
+
+  tbl_channel_summary:table(
+    title: "缴费渠道汇总",
+    sqlId: "stat.channel.summary",
+    selectable: "true",
+    pagination: "true"
+  )<
+    channelId!!: hidden,
+    channelName: text(text: "渠道"),
+    txCount: number(text: "缴费笔数"),
+    txRatio: number(text: "占比(%)", render: "progress", color: "blue"),
+    txAmount: number(text: "缴费金额", format: "currency"),
+    amountRatio: number(text: "金额占比(%)", render: "progress", color: "green"),
+    avgAmount: number(text: "平均单笔金额", format: "currency"),
+    successRate: number(text: "成功率(%)", format: "percent", color: "auto")
+  >,
+
+  tbl_monthly_trend:table(
+    sqlId: "stat.channel.trend",
+    border: "none"
+  )<
+    monthId!!: hidden,
+    month: text(text: "月份"),
+    wechat: number(text: "微信", format: "percent"),
+    alipay: number(text: "支付宝", format: "percent"),
+    bank: number(text: "银行代扣", format: "percent"),
+    app: number(text: "APP", format: "percent"),
+    counter: number(text: "柜台", format: "percent")
+  >
+>

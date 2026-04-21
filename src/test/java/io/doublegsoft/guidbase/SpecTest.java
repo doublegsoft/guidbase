@@ -8,11 +8,23 @@ import java.io.FileInputStream;
 public class SpecTest {
 
   @Test
-  public void spec_0001() throws Exception {
-//    GuidbaseContext ctx = SyntaxTest.parse(new FileInputStream("/Users/christian/Downloads/a.gbl"));
-//    GuidbaseContainer page = ctx.page();
-//    Assert.assertEquals("index", page.id());
-//    Assert.assertEquals(3, page.children().size());
+  public void editable_form_with_groups() throws Exception {
+    GuidbaseContext ctx = SyntaxTest.parse(getClass().getResourceAsStream("/page/editable_form_with_groups"));
+    GuidbaseContainer page = ctx.page();
+    Assert.assertEquals("edit", page.id());
+  }
+
+  @Test
+  public void pagination_table() throws Exception {
+    GuidbaseContext ctx = SyntaxTest.parse(getClass().getResourceAsStream("/page/pagination_table"));
+    GuidbaseContainer page = ctx.page();
+    Assert.assertEquals("list", page.id());
+  }
+
+  @Test
+  public void data_analysis_report() throws Exception {
+    GuidbaseContext ctx = SyntaxTest.parse(getClass().getResourceAsStream("/page/data_analysis_report"));
+    GuidbaseContainer page = ctx.page();
   }
 
 }

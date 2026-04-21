@@ -1,0 +1,53 @@
+edit:page(title: "新建账户")<
+  frm_account:form(
+    sqlId: "elec.account.detail"
+  )<
+    accountId!!: hidden,
+
+    basic_info:group(text: "基本信息 (Basic Information)")<
+      acctNo: input(text: "账户编号", readonly: "true"),
+      acctStatus!: dict(text: "账户状态", required: "true"),
+      acctType!: dict(text: "账户类型", required: "true"),
+      createDate: date(text: "建档日期"),
+      acctName!: input(text: "账户名称", required: "true", colspan: "2"),
+      elecCategory!: dict(text: "用电类别", required: "true"),
+      elecSubCategory: dict(text: "用电子类")
+    >,
+
+    owner_info:group(text: "归属信息")<
+      bizArea!: dict(text: "所属营业区", required: "true"),
+      supplyStation!: dict(text: "所属供电所", required: "true"),
+      clerk: input(text: "营业员"),
+      acctManager: input(text: "客户经理")
+    >,
+
+    billing_settings:group(text: "账务设置 (Billing Settings)")<
+      billingCycle!: dict(text: "结算周期", required: "true"),
+      readDay: dict(text: "抄表日"),
+      payDeadline: number(text: "缴费期限", suffix: "天"),
+      penaltyRate: number(text: "违约金率", suffix: "%/天"),
+      autoDeduct: dict(text: "自动扣费"),
+      bankCard: input(text: "绑定银行卡", colspan: "2", placeholder: "卡号后四位，如未绑定留空"),
+      tieredPlan: dict(text: "阶梯计费方案")
+    >,
+
+    notify_settings:group(text: "通知设置 (Notification Settings)")<
+      notifyMethod: dict(text: "电费通知方式"),
+      billLang: dict(text: "账单语言"),
+      billFormat: dict(text: "账单格式"),
+      mobile: input(text: "通知手机号"),
+      email: input(text: "通知邮箱", colspan: "3", placeholder: "选填，用于电子账单推送")
+    >,
+
+    remarks:group(text: "备注 (Remarks)")<
+      internalRemark: textarea(text: "内部备注", colspan: "4"),
+      changeReason: textarea(text: "变更原因", colspan: "4", placeholder: "请填写本次修改原因（必填）")
+    >
+  >,
+
+  buttons<
+    (type: "primary", text: "保存", icon: "check", ref: "frm_account", uri: "/data/elec/account/save.do", sqlId: "elec.account.save"),
+    (type: "default", text: "取消", icon: "close"),
+    (type: "danger", text: "申请销户", icon: "minus-circle", ref: "frm_account", uri: "/data/elec/account/cancel.do", sqlId: "elec.account.cancel")
+  >
+>
