@@ -1,0 +1,39 @@
+gallery:page(title: "照片记录")<
+  frm_search:form(
+    layout: "inline"
+  )<
+    keyword: input(placeholder: "搜索记录编号/客户"),
+    inspector: dict(placeholder: "全部稽查员"),
+    category: dict(placeholder: "全部分类")
+  >,
+
+  toolbar(layout: "flex", justify: "space-between")<
+    search_actions:buttons<
+      (type: "primary", text: "搜索", ref: "frm_search", action: "query"),
+      (type: "default", text: "重置", ref: "frm_search", action: "reset")
+    >,
+    view_toggle:buttons<
+      (type: "primary", text: "网格", icon: "appstore", action: "switch_view", payload: "GRID"),
+      (type: "default", text: "列表", icon: "bars", action: "switch_view", payload: "LIST")
+    >
+  >,
+
+  kpi_summary:group(layout: "stats-bar")<
+    totalPhotos: metric(text: "照片总数"),
+    violationCount: metric(text: "违章证据", color: "red"),
+    newThisMonth: metric(text: "本月新增", color: "blue"),
+    linkedCount: metric(text: "关联记录数")
+  >,
+
+  lst_photos:gallery(
+    sqlId: "elec.photo.list",
+    columns: "4"
+  )<
+    photoId!!: hidden,
+    imgUrl: image(placement: "cover"),
+    photoCode: text(placement: "title"),
+    category: dict(render: "tag", placement: "bottom-left"),
+    uploadDate: date(placement: "bottom-right"),
+    uploader: text(placement: "bottom-right")
+  >
+>

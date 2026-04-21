@@ -27,4 +27,10 @@ public class SpecTest {
     GuidbaseContainer page = ctx.page();
   }
 
+  @Test
+  public void grid_collection() throws Exception {
+    GuidbaseContext ctx = SyntaxTest.parse(getClass().getResourceAsStream("/page/grid_collection"));
+    GuidbaseContainer page = ctx.page();
+  }
+
 }
