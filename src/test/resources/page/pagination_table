@@ -1,0 +1,17 @@
+list:page(title: "账户列表")<
+  tbl_account:table(
+    sqlId: "elec.account.list",
+    selectable: "true"
+  )<
+    accountId!!: hidden,
+    acctNo: text(text: "账户编号"),
+    acctName: text(text: "账户名称"),
+    acctStatus: dict(text: "状态", render: "tag"),
+    acctType: dict(text: "账户类型", render: "tag"),
+    bizArea: dict(text: "营业区"),
+    supplyStation: dict(text: "供电所"),
+    clerk: text(text: "营业员"),
+    acctManager: text(text: "客户经理"),
+    billingCycle: dict(text: "结算周期")
+  >
+>
